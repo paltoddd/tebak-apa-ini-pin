@@ -1,0 +1,385 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  body {
+    font-family: Arial, sans-serif;
+    color: #333;
+    overflow-x: hidden;
+    background-color: #fff5f8;
+    position: relative;
+  }
+  
+  h1, h2 {
+    text-align: center;
+    color: #000000;
+    margin: 20px 0;
+  }
+  
+  .gallery {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 40px 0;
+  }
+  
+  .frame-container {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    width: 100%;
+  }
+  
+  .frame {
+    width: 200px;
+    height: 200px;
+    opacity: 0;
+    position: relative;
+    transform: translateY(50px) rotate(-5deg);
+    transition: opacity 1s ease, transform 1s ease;
+  }
+  
+  .frame img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border: 5px solid #ff6f61;
+    border-radius: 10px;
+    transition: transform 0.3s ease;
+  }
+  
+  .frame.left {
+    margin-left: 10%;
+    transform: translateX(-100px) rotate(-10deg);
+  }
+  
+  .frame.right {
+    margin-left: auto;
+    margin-right: 10%;
+    transform: translateX(100px) rotate(10deg);
+  }
+  
+  .frame.left.visible, .frame.right.visible {
+    opacity: 1;
+    transform: translateX(0) rotate(0);
+  }
+  
+  .frame:hover img {
+    transform: scale(1.05);
+  }
+  
+  .message {
+    background-color: #ffe6e1;
+    padding: 50px 20px;
+    text-align: center;
+    font-size: 18px;
+    opacity: 0;
+    transform: translateY(50px);
+    transition: opacity 1s ease, transform 1s ease;
+    margin-top: 40px;
+  }
+  
+  p {
+    max-width: 600px;
+    margin: 0 auto;
+    line-height: 1.5;
+    color: #555;
+  }
+  
+  .visible {
+    opacity: 1;
+    transform: translateY(0) rotate(0);
+  }
+  
+  /* Dekorasi Shape */
+  .decorations {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    overflow: hidden;
+  }
+  
+  .shape {
+    position: absolute;
+    opacity: 0.15;
+    z-index: -1;
+  }
+  
+  /* Lingkaran Dekoratif */
+  .circle1 {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    background-color: #ff6f61;
+    top: 20%;
+    left: 15%;
+  }
+  
+  .circle2 {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    background-color: #ffb3b0;
+    top: 60%;
+    right: 20%;
+  }
+  
+  /* Hati Dekoratif */
+  .heart1, .heart2 {
+    font-size: 3rem;
+    color: #4e0700;
+  }
+  
+  .heart1 {
+    top: 40%;
+    left: 10%;
+  }
+  
+  .heart2 {
+    top: 80%;
+    right: 5%;
+  }
+  
+  /* Persegi Dekoratif */
+  .square1, .square2 {
+    width: 60px;
+    height: 60px;
+    background-color: #ffb3b0;
+    border-radius: 10px;
+  }
+  
+  .square1 {
+    top: 30%;
+    left: 60%;
+    transform: rotate(15deg);
+  }
+  
+  .square2 {
+    top: 75%;
+    right: 15%;
+    transform: rotate(-10deg);
+  }
+  
+  /* Shape untuk Judul */
+.title-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+  }
+  
+  .title-shape {
+    width: 100px; /* Atur lebar shape */
+    height: 20px; /* Atur tinggi shape */
+    background-color: rgba(255, 110, 97, 0.3); /* Warna shape */
+    border-radius: 10px; /* Membulatkan sudut */
+    position: absolute; /* Posisi shape */
+  }
+  
+  .title-shape:first-of-type {
+    left: -120px; /* Menempatkan shape di kiri judul */
+  }
+  
+  .title-shape:last-of-type {
+    right: -120px; /* Menempatkan shape di kanan judul */
+  }
+  
+  /* Frame Image - Gambar Miring */
+  .frame {
+    width: 200px;
+    height: 200px;
+    opacity: 0;
+    position: relative;
+    transform: translateY(50px) rotate(-5deg); /* Miringkan gambar sedikit */
+    transition: opacity 1s ease, transform 1s ease;
+  }
+  
+  .frame img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border: 5px solid #949494;
+    border-radius: 10px;
+    transition: transform 0.3s ease;
+  }
+  
+  .frame.left {
+    margin-left: 10%;
+    transform: translateX(-100px) rotate(-5deg); /* Miringkan sedikit */
+  }
+  
+  .frame.right {
+    margin-left: auto;
+    margin-right: 10%;
+    transform: translateX(100px) rotate(5deg); /* Miringkan sedikit */
+  }
+  
+  .frame.left.visible, .frame.right.visible {
+    opacity: 1;
+    transform: translateX(0) rotate(0); /* Kembalikan ke posisi normal saat visible */
+  }
+  
+  body, html {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+  }
+  
+  .parallax-header {
+    background-image: url('/png/meteorid.png'); /* Ganti dengan gambar yang diinginkan */
+    height: 500px; /* Tinggi header */
+    background-attachment: fixed; /* Mengaktifkan efek parallax */
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+  }
+  
+  .overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5); /* Overlay transparan */
+    color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+  }
+  
+  .content {
+    height: 500px; /* Tinggi setiap bagian konten */
+    padding: 20px;
+    background-color: #f0f0f0; /* Warna latar belakang konten */
+    border-bottom: 1px solid #ccc; /* Batas bawah */
+  }
+  
+  h2 {
+    margin-top: 40px;
+  }
+  
+  body, html {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background-image: url('/png/Script-HTML-Bucin-Bucin-Malas.id-dari-Paling-IT-dan-Sinkronin-Terbaru.jpg'); /* Ganti dengan gambar latar belakang yang diinginkan */
+    background-color: #f0f0f0; /* Warna latar belakang sebagai fallback */
+    background-size: cover; /* Menutupi seluruh halaman */
+    background-position: center; /* Memusatkan gambar */
+    background-attachment: fixed; /* Agar latar belakang tetap saat menggulir */
+  }
+  
+  .parallax-header {
+    height: 500px; /* Tinggi header */
+    background-attachment: fixed; /* Mengaktifkan efek parallax */
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+  }
+  
+  .overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5); /* Overlay transparan */
+    color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+  }
+  
+  .content {
+    height: 500px; /* Tinggi setiap bagian konten */
+    padding: 20px;
+    background-color: rgba(240, 240, 240, 0.8); /* Warna latar belakang konten dengan transparansi */
+    border-bottom: 1px solid #ccc; /* Batas bawah */
+    color: #333; /* Warna teks */
+  }
+  
+  h2 {
+    margin-top: 40px;
+  }
+  
+
+  body, html {
+    margin: 0;
+    padding: 0;
+    font-family: 'Itim', cursive; /* Menggunakan font "Itim" */
+    background-color: #f0f0f0; /* Warna latar belakang halaman */
+    background-image: url('path/to/your-background-image.jpg'); /* Gambar latar belakang */
+    background-size: cover; /* Menutupi seluruh halaman */
+    background-position: center; /* Memusatkan gambar */
+    background-attachment: fixed; /* Latar belakang tetap saat scroll */
+  }
+  
+  .parallax-header {
+    height: 500px; /* Tinggi header */
+    background-image: url('path/to/your-header-image.jpg'); /* Gambar latar belakang header */
+    background-attachment: fixed; /* Mengaktifkan efek parallax */
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+  }
+  
+  .overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5); /* Overlay transparan */
+    color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+  }
+  
+  .content {
+    height: 500px; /* Tinggi setiap bagian konten */
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative; /* Agar gambar dapat diposisikan */
+    color: #333; /* Warna teks */
+    overflow: hidden; /* Agar konten tidak meluber */
+  }
+  
+  .content img {
+    width: 100%; /* Lebar gambar 100% dari elemen konten */
+    max-width: 300px; /* Lebar maksimum */
+    border-radius: 10px; /* Sudut melengkung */
+    transform: rotate(-5deg); /* Memiringkan gambar */
+    transition: opacity 0.5s; /* Transisi untuk efek memudar */
+  }
+  
+  .content.left img {
+    transform: rotate(-5deg); /* Memiringkan gambar ke kiri */
+  }
+  
+  .content.right img {
+    transform: rotate(5deg); /* Memiringkan gambar ke kanan */
+  }
+  
+  h2 {
+    margin-top: 20px; /* Jarak atas untuk judul */
+  }
+  
